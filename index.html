@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>The title of this project</title>
+  <script type="text/javascript" src="build/libs/jquery.js"></script>
+  <script type="text/javascript" src="build/libs/underscore.js"></script>
+  <script type="text/javascript" src="build/libs/in-view.js"></script>
+  <style>
+    h1 {
+      height: 500px;
+    }
+  </style>
+</head>
+<body uvc="MainPage">
+  <h1 uvi="MainPage.title1">The title 1</h1>
+  <h1 uvi="MainPage.title2">The title 2</h1>
+  <h1 uvi="MainPage.title3">The title 3</h1>
+  <h1 uvi="MainPage.title4">The title 4</h1>
+  <h1 uvi="MainPage.title5">The title 5</h1>
+</body>
+<script>
+  $(document).ready(function() {
+    $.getScript("build/main.bundle.js");
+  });
+</script>
+</html>

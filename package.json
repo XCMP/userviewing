@@ -1,0 +1,25 @@
+{
+  "name": "userviewing",
+  "version": "1.0.0",
+  "description": "Seeing what the user is seeing",
+  "scripts": {
+    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
+    "start": "http-server",
+    "dev": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "UNKNOWN"
+  },
+  "author": "XCMP",
+  "license": "ISC",
+  "dependencies": {
+    "in-view": "^0.6.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "webpack": "^1.13.3"
+  }
+}
