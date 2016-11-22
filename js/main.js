@@ -1,12 +1,18 @@
+import * as CONSTS from './utils/constants'
 import {getContainerId} from './finders/container';
 import {send} from './sender/sender';
+import {dequeue, enqueue} from './queue/queue';
 
 const containerId = getContainerId();
-
 send(containerId);
 
-inView.threshold(0.25);
-
-inView('[uvi]')
-    .on('enter', el => {console.log('Enter: ', $(el).attr('uvi'));})
-    .on('exit',  el => {console.log('Exit : ', $(el).attr('uvi'));});
+inView.threshold(CONSTS.PERCENTAGE_ITEM_IN_VIEW);
+inView('[data-uvi]')
+    .on('enter', el => {
+      const id = $(el).attr('data-uvi');
+      enqueue(id);
+    })
+    .on('exit',  el => {
+      const id = $(el).attr('data-uvi');
+      dequeue(id);
+    });
