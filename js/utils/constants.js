@@ -1,5 +1,5 @@
 const PERCENTAGE_ITEM_IN_VIEW = 25/100;
-const TIME_IN_VIEW_MS = 1000;
+const TIME_IN_VIEW_MS = 3000;
 const URL_M2_END_POINT = 'http://localhost:8080';
 
 export {

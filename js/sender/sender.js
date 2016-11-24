@@ -1,7 +1,8 @@
 import * as CONSTS from '../utils/constants'
+import { getUTCDate } from '../utils/utils'
 
 function gatherData(id) {
-  const timestamp = Date.now();
+  const timestamp = getUTCDate();
   const data = {
     sessionId: 'mySessionId',
     deviceId: 'DESKTOP',
