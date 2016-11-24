@@ -1,7 +1,7 @@
 import * as CONSTS from './utils/constants'
-import {getContainerId} from './finders/container';
-import {send} from './sender/sender';
-import {dequeue, enqueue} from './queue/queue';
+import {getContainerId} from './finders/container'
+import {send} from './sender/sender'
+import {dequeue, enqueue} from './queue/queue'
 
 const containerId = getContainerId();
 send(containerId);
