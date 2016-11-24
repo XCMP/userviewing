@@ -1,5 +1,4 @@
-import * as CONSTS from '../utils/constants'
-import {send} from '../sender/sender'
+import { getUTCDate } from '../utils/utils'
 
 const queue = [];
 
@@ -7,10 +6,10 @@ function enqueue(id) {
   console.log('enqueue', id);
   queue.push({
         id: id,
-        sender: setTimeout(
-            function () {
-              send(id);
-            }, CONSTS.TIME_IN_VIEW_MS)
+        sender: {
+          "id": id,
+          "timestamp": getUTCDate()
+        }
       });
 }
 
@@ -19,11 +18,18 @@ function dequeue(id) {
   const index = queue.findIndex(function(timer) {
     return timer.id === id;
   });
-  const timer = queue.splice(index, 1)[0];
-  clearTimeout(timer.sender);
+  queue.splice(index, 1)[0];
+}
+
+function processor() {
+  window.setInterval(function(){
+    queue.pop();
+  },
+  1000);
 }
 
 export {
   dequeue,
-  enqueue
+  enqueue,
+  processor
 }
