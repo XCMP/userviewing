@@ -11,7 +11,7 @@ function gatherData(id) {
 }
 
 function sendData(data) {
-  console.log('sending', data);
+  console.log('sending', JSON.stringify(data, null, 2));
   $.ajax({
     url: CONSTS.URL_M2_END_POINT,
     type: "GET",
