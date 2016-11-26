@@ -1,18 +1,20 @@
 import * as CONSTS from './utils/constants'
-import {getContainerId} from './finders/container'
-import {send} from './sender/sender'
-import {dequeue, enqueue} from './queue/queue'
+import { getContainerId, getItemId } from './finders/finders'
+import { sendContainer } from './sender/sender'
+import { dequeue, enqueue, startWorker } from './queue/queue'
 
 const containerId = getContainerId();
-send(containerId);
+sendContainer(containerId);
 
 inView.threshold(CONSTS.PERCENTAGE_ITEM_IN_VIEW);
-inView('[data-uvi]')
+inView(CONSTS.ITEM_SELECTOR)
     .on('enter', el => {
-      const id = $(el).attr('data-uvi');
+      const id = getItemId(el);
       enqueue(id);
     })
     .on('exit',  el => {
-      const id = $(el).attr('data-uvi');
+      const id = getItemId(el);
       dequeue(id);
     });
+
+startWorker();

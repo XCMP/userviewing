@@ -1,35 +1,49 @@
+import * as CONSTS from '../utils/constants'
 import { getUTCDate } from '../utils/utils'
+import { sendElements } from '../sender/sender'
 
-const queue = [];
+const queue = new Map();
+
+function isTimeInViewReached(timestamp) {
+  return (getUTCDate() - timestamp) >= CONSTS.TIME_IN_VIEW_MS;
+}
+
+function process() {
+  const elements = [];
+  queue.forEach(function(element, key) {
+    console.log(key);
+    if (isTimeInViewReached(element.timestamp)) {
+      elements.push(element);
+      queue.delete(key);
+    }
+  });
+
+  if (elements.length > 0) {
+    sendElements(elements);
+  } else {
+    console.log('nothing to send. queue size: ' + queue.size);
+  }
+}
 
 function enqueue(id) {
   console.log('enqueue', id);
-  queue.push({
-        id: id,
-        sender: {
-          "id": id,
-          "timestamp": getUTCDate()
-        }
-      });
+  queue.set(id, { "id": id, "timestamp": getUTCDate() });
 }
 
 function dequeue(id) {
   console.log('dequeue', id);
-  const index = queue.findIndex(function(timer) {
-    return timer.id === id;
-  });
-  queue.splice(index, 1)[0];
+  queue.delete(id);
 }
 
-function processor() {
+function startWorker() {
   window.setInterval(function(){
-    queue.pop();
-  },
-  1000);
+      process();
+    }, CONSTS.WORKER_TIMER_MS
+  );
 }
 
 export {
   dequeue,
   enqueue,
-  processor
+  startWorker
 }

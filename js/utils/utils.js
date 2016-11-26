@@ -8,9 +8,8 @@ function getUTCDate() {
       now.getUTCMinutes(),
       now.getUTCSeconds()
   );
-  return UTC;
+  return UTC.getTime();
 }
-
 
 export {
   getUTCDate

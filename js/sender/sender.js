@@ -1,14 +1,22 @@
 import * as CONSTS from '../utils/constants'
 import { getUTCDate } from '../utils/utils'
 
-function gatherData(id) {
-  const timestamp = getUTCDate();
-  const data = {
+function gatherBaseData() {
+  return {
     sessionId: 'mySessionId',
     deviceId: 'DESKTOP',
-    timestamp: timestamp
+    timestamp: getUTCDate()
   };
-  return _.extend(data, {elements: [{id: id, timestamp: timestamp}]});
+}
+
+function gatherData(id) {
+  const data = gatherBaseData();
+  return _.extend(data, {elements: [{id: id, timestamp: data.timestamp}]});
+}
+
+function gatherDataForElements(elements) {
+  const data = gatherBaseData();
+  return _.extend(data, {elements: elements});
 }
 
 function sendData(data) {
@@ -23,11 +31,17 @@ function sendData(data) {
   });
 }
 
-function send(id) {
+function sendContainer(id) {
   const data = gatherData(id);
   sendData(data);
 }
 
+function sendElements(elements) {
+  const data = gatherDataForElements(elements);
+  sendData(data);
+}
+
 export {
-  send
+  sendContainer,
+  sendElements
 }
