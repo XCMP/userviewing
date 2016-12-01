@@ -27,7 +27,11 @@ function process() {
 
 function enqueue(id) {
   console.log('enqueue', id);
-  queue.set(id, { "id": id, "timestamp": getUTCDate() });
+  queue.set(id, {
+    'm2Id': id,
+    'timestamp': getUTCDate(),
+    "what": 'view',
+  });
 }
 
 function dequeue(id) {

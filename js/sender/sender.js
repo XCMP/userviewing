@@ -3,15 +3,16 @@ import { getUTCDate } from '../utils/utils'
 
 function gatherBaseData() {
   return {
+    sendTimestamp: getUTCDate(),
     sessionId: 'mySessionId',
     deviceId: 'DESKTOP',
-    timestamp: getUTCDate()
+    resolution: '1024*786',
   };
 }
 
 function gatherData(id) {
   const data = gatherBaseData();
-  return _.extend(data, {elements: [{id: id, timestamp: data.timestamp}]});
+  return _.extend(data, {elements: [{m2Id: id, timestamp: data.timestamp}]});
 }
 
 function gatherDataForElements(elements) {
