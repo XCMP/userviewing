@@ -1,23 +1,23 @@
-import * as CONSTS from '../utils/constants'
-import { getUTCDate } from '../utils/utils'
+import * as CONSTS from '../utils/constants';
+import { getUTCDate } from '../utils/date';
+import { getViewportDimensions } from '../utils/viewport';
 
 function gatherBaseData() {
   return {
     sendTimestamp: getUTCDate(),
-    sessionId: 'mySessionId',
-    deviceId: 'DESKTOP',
-    resolution: '1024*786',
+    bltgSessionId: 'mySessionId',
+    resolution: getViewportDimensions(),
   };
 }
 
 function gatherData(id) {
   const data = gatherBaseData();
-  return _.extend(data, {elements: [{m2Id: id, timestamp: data.timestamp}]});
+  return _.extend(data, {measurements: [{m2Id: id, timestamp: data.timestamp}]});
 }
 
 function gatherDataForElements(elements) {
   const data = gatherBaseData();
-  return _.extend(data, {elements: elements});
+  return _.extend(data, {measurements: elements});
 }
 
 function sendData(data) {
@@ -44,5 +44,5 @@ function sendElements(elements) {
 
 export {
   sendContainer,
-  sendElements
+  sendElements,
 }

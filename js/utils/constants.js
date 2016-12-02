@@ -1,12 +1,14 @@
-const CONTAINER_ATTRIBUTE = 'data-uvc';
+const CONTAINER_ATTRIBUTE = 'data-bltgc';
 const CONTAINER_SELECTOR = '['+CONTAINER_ATTRIBUTE+']';
-const ITEM_ATTRIBUTE = 'data-uvi';
+const ITEM_ATTRIBUTE = 'data-bltgi';
 const ITEM_SELECTOR = '['+ITEM_ATTRIBUTE+']';
 
 const PERCENTAGE_ITEM_IN_VIEW = 25/100;
 const TIME_IN_VIEW_MS = 3000;
 const WORKER_TIMER_MS = (TIME_IN_VIEW_MS + 100);
 const URL_M2_END_POINT = 'http://localhost:8080';
+
+const EVENT_VIEW = 'view;'
 
 export {
   CONTAINER_ATTRIBUTE,
@@ -17,5 +19,7 @@ export {
   PERCENTAGE_ITEM_IN_VIEW,
   TIME_IN_VIEW_MS,
   WORKER_TIMER_MS,
-  URL_M2_END_POINT
+  URL_M2_END_POINT,
+
+  EVENT_VIEW,
 };

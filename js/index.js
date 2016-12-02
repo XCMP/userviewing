@@ -3,11 +3,12 @@ import { getContainerId, getItemId } from './finders/finders'
 import { sendContainer } from './sender/sender'
 import { dequeue, enqueue, startWorker } from './queue/queue'
 
-const containerId = getContainerId();
-sendContainer(containerId);
+const initMeasurement = () => {
+  const containerId = getContainerId();
+  sendContainer(containerId);
 
-inView.threshold(CONSTS.PERCENTAGE_ITEM_IN_VIEW);
-inView(CONSTS.ITEM_SELECTOR)
+  inView.threshold(CONSTS.PERCENTAGE_ITEM_IN_VIEW);
+  inView(CONSTS.ITEM_SELECTOR)
     .on('enter', el => {
       const id = getItemId(el);
       enqueue(id);
@@ -17,4 +18,7 @@ inView(CONSTS.ITEM_SELECTOR)
       dequeue(id);
     });
 
-startWorker();
+  startWorker();
+};
+
+window.initMeasurement = initMeasurement;

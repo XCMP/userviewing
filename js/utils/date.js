@@ -12,5 +12,5 @@ function getUTCDate() {
 }
 
 export {
-  getUTCDate
+  getUTCDate,
 }
