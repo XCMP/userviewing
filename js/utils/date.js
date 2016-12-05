@@ -11,6 +11,6 @@ function getUTCDate() {
   return UTC.getTime();
 }
 
-export {
+export default {
   getUTCDate,
 }

@@ -1,11 +1,11 @@
 import * as CONSTS from '../utils/constants'
-import { getUTCDate } from '../utils/date'
+import date from '../utils/date'
 import { sendElements } from '../sender/sender'
 
 const queue = new Map();
 
 function isTimeInViewReached(timestamp) {
-  return (getUTCDate() - timestamp) >= CONSTS.TIME_IN_VIEW_MS;
+  return (date.getUTCDate() - timestamp) >= CONSTS.TIME_IN_VIEW_MS;
 }
 
 function process() {
@@ -35,7 +35,7 @@ function enqueue(id) {
   console.log('enqueue', id);
   queue.set(id, {
     'm2Id': id,
-    'timestamp': getUTCDate(),
+    'timestamp': date.getUTCDate(),
     "what": CONSTS.EVENT_VIEW,
   });
 }

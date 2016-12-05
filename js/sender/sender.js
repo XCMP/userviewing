@@ -1,10 +1,10 @@
 import * as CONSTS from '../utils/constants';
-import { getUTCDate } from '../utils/date';
+import date from '../utils/date';
 import { getViewportDimensions } from '../utils/viewport';
 
 function gatherBaseData() {
   return {
-    sendTimestamp: getUTCDate(),
+    sendTimestamp: date.getUTCDate(),
     bltgSessionId: 'mySessionId',
     resolution: getViewportDimensions(),
   };
