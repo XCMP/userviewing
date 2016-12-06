@@ -4,6 +4,7 @@
   <script type="text/javascript" src="build/libs/jquery.min.js"></script>
   <script type="text/javascript" src="build/libs/underscore-min.js"></script>
   <script type="text/javascript" src="build/libs/in-view.min.js"></script>
+  <script type="text/javascript" src="build/measurement.js"></script>
   <style>
     h1 {
       height: 300px;
@@ -12,31 +13,29 @@
     }
   </style>
 </head>
-<body data-uvc="MainPage">
-<h1 data-uvi="MainPage.title01">The title 01<br><br><br><br><br><br><br>The title 01</h1>
-<h1 data-uvi="MainPage.title02">The title 02<br><br><br><br><br><br><br>The title 02</h1>
-<h1 data-uvi="MainPage.title03">The title 03<br><br><br><br><br><br><br>The title 03</h1>
-<h1 data-uvi="MainPage.title04">The title 04<br><br><br><br><br><br><br>The title 04</h1>
-<h1 data-uvi="MainPage.title05">The title 05<br><br><br><br><br><br><br>The title 05</h1>
-<h1 data-uvi="MainPage.title06">The title 06<br><br><br><br><br><br><br>The title 06</h1>
-<h1 data-uvi="MainPage.title07">The title 07<br><br><br><br><br><br><br>The title 07</h1>
-<h1 data-uvi="MainPage.title08">The title 08<br><br><br><br><br><br><br>The title 08</h1>
-<h1 data-uvi="MainPage.title09">The title 09<br><br><br><br><br><br><br>The title 09</h1>
-<h1 data-uvi="MainPage.title10">The title 10<br><br><br><br><br><br><br>The title 10</h1>
-<h1 data-uvi="MainPage.title11">The title 01<br><br><br><br><br><br><br>The title 11</h1>
-<h1 data-uvi="MainPage.title12">The title 02<br><br><br><br><br><br><br>The title 12</h1>
-<h1 data-uvi="MainPage.title13">The title 03<br><br><br><br><br><br><br>The title 13</h1>
-<h1 data-uvi="MainPage.title14">The title 04<br><br><br><br><br><br><br>The title 14</h1>
-<h1 data-uvi="MainPage.title15">The title 05<br><br><br><br><br><br><br>The title 15</h1>
-<h1 data-uvi="MainPage.title16">The title 06<br><br><br><br><br><br><br>The title 16</h1>
-<h1 data-uvi="MainPage.title17">The title 07<br><br><br><br><br><br><br>The title 17</h1>
-<h1 data-uvi="MainPage.title18">The title 08<br><br><br><br><br><br><br>The title 18</h1>
-<h1 data-uvi="MainPage.title19">The title 09<br><br><br><br><br><br><br>The title 19</h1>
-<h1 data-uvi="MainPage.title20">The title 10<br><br><br><br><br><br><br>The title 10</h1>
+<body data-bltgc="MainPage">
+  <h1 data-bltgi="MainPage.title01">The title 01<br><br><br><br><br><br><br>The title 01</h1>
+  <h1 data-bltgi="MainPage.title02">The title 02<br><br><br><br><br><br><br>The title 02</h1>
+  <h1 data-bltgi="MainPage.title03">The title 03<br><br><br><br><br><br><br>The title 03</h1>
+  <h1 data-bltgi="MainPage.title04">The title 04<br><br><br><br><br><br><br>The title 04</h1>
+  <h1 data-bltgi="MainPage.title05">The title 05<br><br><br><br><br><br><br>The title 05</h1>
+  <h1 data-bltgi="MainPage.title06">The title 06<br><br><br><br><br><br><br>The title 06</h1>
+  <h1 data-bltgi="MainPage.title07">The title 07<br><br><br><br><br><br><br>The title 07</h1>
+  <h1 data-bltgi="MainPage.title08">The title 08<br><br><br><br><br><br><br>The title 08</h1>
+  <h1 data-bltgi="MainPage.title09">The title 09<br><br><br><br><br><br><br>The title 09</h1>
+  <h1 data-bltgi="MainPage.title10">The title 10<br><br><br><br><br><br><br>The title 10</h1>
+  <h1 data-bltgi="MainPage.title11">The title 01<br><br><br><br><br><br><br>The title 11</h1>
+  <h1 data-bltgi="MainPage.title12">The title 02<br><br><br><br><br><br><br>The title 12</h1>
+  <h1 data-bltgi="MainPage.title13">The title 03<br><br><br><br><br><br><br>The title 13</h1>
+  <h1 data-bltgi="MainPage.title14">The title 04<br><br><br><br><br><br><br>The title 14</h1>
+  <h1 data-bltgi="MainPage.title15">The title 05<br><br><br><br><br><br><br>The title 15</h1>
+  <h1 data-bltgi="MainPage.title16">The title 06<br><br><br><br><br><br><br>The title 16</h1>
+  <h1 data-bltgi="MainPage.title17">The title 07<br><br><br><br><br><br><br>The title 17</h1>
+  <h1 data-bltgi="MainPage.title18">The title 08<br><br><br><br><br><br><br>The title 18</h1>
+  <h1 data-bltgi="MainPage.title19">The title 09<br><br><br><br><br><br><br>The title 19</h1>
+  <h1 data-bltgi="MainPage.title20">The title 10<br><br><br><br><br><br><br>The title 10</h1>
 </body>
 <script>
-  $(document).ready(function() {
-    $.getScript("build/main.bundle.js");
-  });
+  window.initMeasurement();
 </script>
 </html>
