@@ -12,12 +12,19 @@ function gatherBaseData() {
 
 function gatherData(id) {
   const data = gatherBaseData();
-  return _.extend(data, {measurements: [{m2Id: id, timestamp: data.timestamp}]});
+  return Object.assign(
+    data, {
+    measurements: [{
+        m2Id: id,
+        timestamp: data.sendTimestamp,
+        event: CONSTS.EVENT_VIEW,
+      }]
+  });
 }
 
 function gatherDataForElements(elements) {
   const data = gatherBaseData();
-  return _.extend(data, {measurements: elements});
+  return Object.assign(data, {measurements: elements});
 }
 
 function sendData(data) {

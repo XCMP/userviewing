@@ -36,7 +36,7 @@ function enqueue(id) {
   queue.set(id, {
     'm2Id': id,
     'timestamp': date.getUTCDate(),
-    "what": CONSTS.EVENT_VIEW,
+    'event': CONSTS.EVENT_VIEW,
   });
 }
 
