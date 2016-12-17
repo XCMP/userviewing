@@ -1,11 +1,11 @@
-import * as CONSTS from '../utils/constants'
-import date from '../utils/date'
+import { DEFAULTS } from '../utils/defaults'
+import { getUTCDate } from '../utils/date'
 import { sendElements } from '../sender/sender'
 
 const queue = new Map();
 
 function isTimeInViewReached(timestamp) {
-  return (date.getUTCDate() - timestamp) >= CONSTS.TIME_IN_VIEW_MS;
+  return (getUTCDate() - timestamp) >= DEFAULTS().TIME_IN_VIEW;
 }
 
 function process() {
@@ -16,7 +16,6 @@ function process() {
 
   queue.forEach(function(element, key) {
 
-    console.log(key);
     if (isTimeInViewReached(element.timestamp)) {
       elements.push(element);
       queue.delete(key);
@@ -31,29 +30,23 @@ function process() {
   }
 }
 
-function enqueue(id) {
+export function enqueue(id) {
   console.log('enqueue', id);
   queue.set(id, {
     'm2Id': id,
-    'timestamp': date.getUTCDate(),
-    'event': CONSTS.EVENT_VIEW,
+    'timestamp': getUTCDate(),
+    'event': DEFAULTS().EVENT_VIEW,
   });
 }
 
-function dequeue(id) {
+export function dequeue(id) {
   console.log('dequeue', id);
   queue.delete(id);
 }
 
-function startWorker() {
+export function startWorker() {
   window.setInterval(function(){
       process();
-    }, CONSTS.WORKER_TIMER_MS
+    }, DEFAULTS().WORKER_TIMER
   );
-}
-
-export {
-  dequeue,
-  enqueue,
-  startWorker
 }

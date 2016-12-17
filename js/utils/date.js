@@ -1,4 +1,4 @@
-function getUTCDate() {
+export function getUTCDate() {
   const now = new Date();
   const UTC = new Date(
       now.getUTCFullYear(),
@@ -9,8 +9,4 @@ function getUTCDate() {
       now.getUTCSeconds()
   );
   return UTC.getTime();
-}
-
-export default {
-  getUTCDate,
 }

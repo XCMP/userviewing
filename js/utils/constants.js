@@ -2,24 +2,16 @@ const CONTAINER_ATTRIBUTE = 'data-bltgc';
 const CONTAINER_SELECTOR = '['+CONTAINER_ATTRIBUTE+']';
 const ITEM_ATTRIBUTE = 'data-bltgi';
 const ITEM_SELECTOR = '['+ITEM_ATTRIBUTE+']';
+const EVENT_VIEW = 'view;';
 
-const PERCENTAGE_ITEM_IN_VIEW = 25/100;
-const TIME_IN_VIEW_MS = 3000;
-const WORKER_TIMER_MS = (TIME_IN_VIEW_MS + 100);
-const URL_M2_END_POINT = 'http://localhost:8080';
-
-const EVENT_VIEW = 'view;'
-
-export {
+const _consts = {
   CONTAINER_ATTRIBUTE,
   CONTAINER_SELECTOR,
   ITEM_ATTRIBUTE,
   ITEM_SELECTOR,
-
-  PERCENTAGE_ITEM_IN_VIEW,
-  TIME_IN_VIEW_MS,
-  WORKER_TIMER_MS,
-  URL_M2_END_POINT,
-
   EVENT_VIEW,
 };
+
+export default function CONSTS() {
+  return _consts;
+}

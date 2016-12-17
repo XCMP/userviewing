@@ -1,10 +1,10 @@
-import * as CONSTS from '../utils/constants';
-import date from '../utils/date';
+import { DEFAULTS } from '../utils/defaults';
+import { getUTCDate } from '../utils/date';
 import { getViewportDimensions } from '../utils/viewport';
 
 function gatherBaseData() {
   return {
-    sendTimestamp: date.getUTCDate(),
+    sendTimestamp: getUTCDate(),
     bltgSessionId: 'mySessionId',
     resolution: getViewportDimensions(),
   };
@@ -13,24 +13,25 @@ function gatherBaseData() {
 function gatherData(id) {
   const data = gatherBaseData();
   return Object.assign(
+    {},
     data, {
     measurements: [{
         m2Id: id,
         timestamp: data.sendTimestamp,
-        event: CONSTS.EVENT_VIEW,
+        event: DEFAULTS().EVENT_VIEW,
       }]
   });
 }
 
 function gatherDataForElements(elements) {
   const data = gatherBaseData();
-  return Object.assign(data, {measurements: elements});
+  return Object.assign({}, data, {measurements: elements});
 }
 
 function sendData(data) {
   console.log('sending', JSON.stringify(data, null, 2));
   $.ajax({
-    url: CONSTS.URL_M2_END_POINT,
+    url: DEFAULTS().URL_END_POINT,
     type: "GET",
     contentType: 'application/json',
     dataType: 'json',
@@ -39,17 +40,13 @@ function sendData(data) {
   });
 }
 
-function sendContainer(id) {
+export function sendContainer(id) {
   const data = gatherData(id);
   sendData(data);
 }
 
-function sendElements(elements) {
+export function sendElements(elements) {
   const data = gatherDataForElements(elements);
   sendData(data);
 }
 
-export {
-  sendContainer,
-  sendElements,
-}

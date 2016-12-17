@@ -3,7 +3,6 @@
   <title>The title of this project</title>
   <script type="text/javascript" src="build/libs/jquery.min.js"></script>
   <script type="text/javascript" src="build/libs/in-view.min.js"></script>
-  <script type="text/javascript" src="build/measurement.js"></script>
   <style>
     h1 {
       height: 300px;
@@ -33,8 +32,14 @@
   <h1 data-bltgi="MainPage.title18">The title 08<br><br><br><br><br><br><br>The title 18</h1>
   <h1 data-bltgi="MainPage.title19">The title 09<br><br><br><br><br><br><br>The title 19</h1>
   <h1 data-bltgi="MainPage.title20">The title 10<br><br><br><br><br><br><br>The title 10</h1>
+
+  <script type="json-ld" data-component-id="bltg">
+    {
+      "URL_END_POINT": "http://localhost:8080/",
+      "TIME_IN_VIEW": 3000,
+      "PERCENTAGE_IN_VIEW": 25
+    }
+  </script>
+  <script type="text/javascript" src="build/measurement.js"></script>
 </body>
-<script>
-  window.initMeasurement();
-</script>
 </html>

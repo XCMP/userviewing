@@ -1,18 +1,15 @@
-import * as CONSTS from '../utils/constants'
+import { DEFAULTS } from '../utils/defaults'
 
-function getContainerId() {
-  const container = $(CONSTS.CONTAINER_SELECTOR)[0];
-  if (container) return $(container).attr(CONSTS.CONTAINER_ATTRIBUTE);
+export function getContainerId() {
+  const container = $(DEFAULTS().CONTAINER_SELECTOR)[0];
+  if (container) {
+    return $(container).attr(DEFAULTS().CONTAINER_ATTRIBUTE);
+  }
   throw new DOMException('container found');
 }
 
-function getItemId(el) {
+export function getItemId(el) {
   if (el === undefined) throw new DOMException('item found');
   const item = $(el);
-  return item.attr(CONSTS.ITEM_ATTRIBUTE);
-}
-
-export {
-    getContainerId,
-    getItemId
+  return item.attr(DEFAULTS().ITEM_ATTRIBUTE);
 }
